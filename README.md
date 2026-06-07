@@ -1,73 +1,127 @@
 # MovieZone
 
-HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG
+## Thông tin đề tài
 
-Khoa: Công nghệ Thông tin 2
+**HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG**
 
-Học phần: Lập Trình Website
+**Khoa:** Công nghệ Thông tin 2
 
-Đề tài số 05
+**Học phần:** Lập Trình Website
 
-Tên đề tài: Ứng dụng xem thông tin phim – MovieZone
+**Đề tài số:** 05
 
-Nhóm thực hiện: 8_LTW
+**Tên đề tài:** Ứng dụng xem thông tin phim – MovieZone
 
-Thành viên:
+**Nhóm thực hiện:** 8_LTW
 
-* Hoàng Gia Bình (Leader)
-* Nguyễn Trần Mạnh Dũng
-* Phạm Thị Tường Vy
-* Nguyễn Thành Long
+### Thành viên nhóm
 
-## Mô tả đề tài
+| STT | Họ và tên             | Vai trò    |
+| --- | --------------------- | ---------- |
+| 1   | Hoàng Gia Bình        | Leader     |
+| 2   | Nguyễn Trần Mạnh Dũng | Thành viên |
+| 3   | Phạm Thị Tường Vy     | Thành viên |
+| 4   | Nguyễn Thành Long     | Thành viên |
 
-MovieZone là website hỗ trợ người dùng tìm kiếm và xem thông tin phim thông qua TMDB API. Người dùng có thể xem thông tin chi tiết của phim, trailer, lưu danh sách phim yêu thích và gửi phản hồi thông qua form liên hệ.
+---
+
+## Giới thiệu dự án
+
+MovieZone là một ứng dụng web hỗ trợ người dùng tìm kiếm và tra cứu thông tin phim thông qua TMDB API. Hệ thống cung cấp các thông tin như tên phim, mô tả, poster, trailer, đánh giá và các thông tin liên quan khác.
+
+Ngoài chức năng tra cứu phim, hệ thống còn hỗ trợ đăng ký tài khoản, đăng nhập, quản lý danh sách phim yêu thích và gửi phản hồi thông qua EmailJS.
+
+---
 
 ## Chức năng chính
 
-* Tìm kiếm phim theo tên, năm phát hành và thể loại.
+### Người dùng
+
+* Tìm kiếm phim theo tên.
+* Xem danh sách phim phổ biến.
 * Xem thông tin chi tiết của phim.
 * Xem trailer phim.
+* Đăng ký tài khoản.
+* Đăng nhập và xác thực bằng JWT.
 * Lưu và quản lý danh sách phim yêu thích.
-* Đăng ký, đăng nhập tài khoản.
-* Gửi phản hồi bằng EmailJS.
+* Gửi phản hồi thông qua biểu mẫu liên hệ.
+
+### Hệ thống
+
+* Kết nối và lấy dữ liệu từ TMDB API.
+* Lưu trữ dữ liệu người dùng trên MongoDB Atlas.
+* Quản lý xác thực người dùng bằng JWT.
+* Upload và lưu trữ hình ảnh thông qua Cloudinary.
+* Gửi email bằng EmailJS.
+
+---
 
 ## Công nghệ sử dụng
 
-Frontend:
+### Frontend
 
 * ReactJS
 * TypeScript
 * Vite
 * Tailwind CSS
+* React Router DOM
+* Axios
+* React Hook Form
+* Zod
 
-Backend:
+### Backend
 
 * Node.js
 * ExpressJS
 * TypeScript
 
-Database:
+### Database
 
 * MongoDB Atlas
+* Mongoose
 
-Các dịch vụ khác:
+### Các dịch vụ tích hợp
 
 * TMDB API
 * JWT Authentication
 * Cloudinary
 * EmailJS
 
-## Hướng dẫn cài đặt và chạy dự án
+---
 
-Clone source code:
+## Cấu trúc thư mục
+
+```text
+MovieZone
+│
+├── client
+│   ├── src
+│   ├── public
+│   └── package.json
+│
+├── server
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── middleware
+│   ├── utils
+│   └── package.json
+│
+└── README.md
+```
+
+---
+
+## Hướng dẫn cài đặt
+
+### 1. Clone dự án
 
 ```bash
 git clone https://github.com/HGBinh/MovieZone.git
 cd MovieZone
 ```
 
-Cài đặt và chạy Frontend:
+### 2. Cài đặt Frontend
 
 ```bash
 cd client
@@ -75,13 +129,13 @@ npm install
 npm run dev
 ```
 
-Frontend chạy tại:
+Frontend mặc định chạy tại:
 
 ```text
 http://localhost:5173
 ```
 
-Cài đặt và chạy Backend:
+### 3. Cài đặt Backend
 
 ```bash
 cd server
@@ -89,18 +143,58 @@ npm install
 npm run dev
 ```
 
-Backend chạy tại:
+Backend mặc định chạy tại:
 
 ```text
 http://localhost:5000
 ```
 
-Build và chạy Backend ở chế độ production:
+---
+
+## Biến môi trường
+
+Tạo file `.env` trong thư mục `server` và cấu hình các biến môi trường cần thiết:
+
+```env
+PORT=
+MONGODB_URI=
+JWT_SECRET=
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+TMDB_API_KEY=
+```
+
+Đối với EmailJS, cấu hình trong phần Frontend theo tài khoản EmailJS đang sử dụng.
+
+---
+
+## Build dự án
+
+Backend:
 
 ```bash
 npm run build
 npm start
 ```
+
+Frontend:
+
+```bash
+npm run build
+```
+
+---
+
+## Triển khai hệ thống
+
+* Frontend: Vercel
+* Backend: Render
+* Database: MongoDB Atlas
+
+---
 
 ## Repository
 
